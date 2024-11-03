@@ -1,0 +1,7 @@
+{
+  "name": "my_puppy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
