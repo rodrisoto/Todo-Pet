@@ -1,20 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+  <ion-toolbar>  
+    <app-company-name [companyName]="'Todo-pet'"></app-company-name>
+    <ion-buttons slot="end"> 
+        <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>  
+  </ion-toolbar> 
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content [fullscreen]="true" class="ion-padding"> 
+  <!-- Imagen de usuario con animación de rebote -->
+  <div class="user-info bounce">
+    <img src="../../assets/img/user.png" alt="User Avatar" class="user-avatar" />
+    <h2><strong>{{ bienvenidos }}</strong><br/> {{ email }}</h2>
+    
   </div>
+
+  <div class="ofertas-info"> 
+    <h2>NOTICIAS</h2>
+  </div>
+
+  <!-- Tarjetas de Ofertas con efecto de desvanecimiento y escala al pasar el mouse -->
+  <ion-card class="fade-in scale-on-hover">
+    <img src="../../assets/img/perro_haloween.jpg" alt="perro_haloween" />
+    <ion-card-header>
+      <ion-card-title>Día de los Muertos para perros</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      En Puebla, México, una iniciativa ha incluido calaveritas comestibles para mascotas en la celebración del Día de Muertos, permitiendo a los dueños recordar a sus amigos peludos en este día especial. Este homenaje incluye figuras de calaveras para perros y gatos, una novedad que ha generado gran interés entre los amantes de los animales
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="fade-in scale-on-hover">
+    <img src="../../assets/img/salud.jpeg" alt="salud" />
+    <ion-card-header>
+      <ion-card-title>La influencia de los perros en la salud mental:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      En el ámbito de la salud, se ha destacado cómo el vínculo con los perros puede beneficiar la salud mental. Un ejemplo reciente es James Middleton, quien atribuye su recuperación de una depresión a su perra Ella, una cocker spaniel que lo ha acompañado en momentos difíciles​    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="fade-in scale-on-hover">
+    <img src="../../assets/img/comida.jpg" alt="Comida" />
+    <ion-card-header>
+      <ion-card-title>Nueva tendencia en alimentación canina:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Las tiendas de mascotas están ofreciendo alimentos especializados para perros que llevan un estilo de vida activo o que necesitan dietas específicas, como piensos bajos en grasa para perros con problemas de peso. Esta tendencia responde a la creciente preocupación de los dueños por ofrecer dietas más saludables a sus mascotas​    </ion-card-content>
+  </ion-card>
 </ion-content>
