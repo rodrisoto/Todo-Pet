@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-galeria',
   templateUrl: './galeria.page.html',
   styleUrls: ['./galeria.page.scss'],
 })
-export class GaleriaPage  {
-
-  constructor() { }
-
+export class GaleriaPage {
   images: string[] = [
     '/assets/img/galeria/1.jpg',
     '/assets/img/galeria/2.jpg',
@@ -31,4 +29,21 @@ export class GaleriaPage  {
     // Agrega más imágenes aquí
   ];
 
+  constructor() {}
+
+  async takePhoto() {
+    try {
+      const photo = await Camera.getPhoto({
+        resultType: CameraResultType.DataUrl, // Devuelve la imagen como DataURL
+        source: CameraSource.Camera,         // Usa la cámara del dispositivo
+        quality: 90                          // Calidad de la imagen
+      });
+
+      if (photo?.dataUrl) {
+        this.images.unshift(photo.dataUrl); // Agrega la nueva foto al inicio de la galería
+      }
+    } catch (error) {
+      console.error('Error al tomar la fotografía:', error);
+    }
+  }
 }

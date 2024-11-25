@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <!--<app-company-name [companyName]="'DronStore'"></app-company-name>-->
+    
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
@@ -31,18 +31,27 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Raza</ion-label>
+        <ion-label position="floating">Apellido</ion-label>
         <ion-input type="text" [(ngModel)]="apellido"></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-label position="floating">usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
 
 
       <ion-item>
-        <ion-label>Tamaño de perro</ion-label>
+        <ion-label>Nivel de Educacion</ion-label>
         <ion-select [(ngModel)]="selectedOption">
-          <ion-select-option value="option1">Pequeño</ion-select-option>
-          <ion-select-option value="option2">Mediano</ion-select-option>
-          <ion-select-option value="option3">Grande</ion-select-option>
+          <ion-select-option value="option1">Universitario</ion-select-option>
+          <ion-select-option value="option2">Magister</ion-select-option>
+          <ion-select-option value="option3">Doctorado</ion-select-option>
         </ion-select>
       </ion-item>
 
