@@ -18,32 +18,56 @@ export class GaleriaPage {
     '/assets/img/galeria/8.jpg',
     '/assets/img/galeria/9.jpg',
     '/assets/img/galeria/10.jpg',
-    '/assets/img/galeria/11.jpg',
-    '/assets/img/galeria/12.jpg',
-    '/assets/img/galeria/13.jpg',
-    '/assets/img/galeria/14.jpg',
-    '/assets/img/galeria/15.jpg',
-    '/assets/img/galeria/16.jpg',
-    '/assets/img/galeria/17.jpg',
-    '/assets/img/galeria/18.jpg',
-    // Agrega más imágenes aquí
   ];
 
+  showModal: boolean = false;
+  selectedImage: string | null = null;
+
   constructor() {}
+
+  openModal(image: string) {
+    this.selectedImage = image;
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.selectedImage = null;
+  }
 
   async takePhoto() {
     try {
       const photo = await Camera.getPhoto({
-        resultType: CameraResultType.DataUrl, // Devuelve la imagen como DataURL
-        source: CameraSource.Camera,         // Usa la cámara del dispositivo
-        quality: 90                          // Calidad de la imagen
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
+        quality: 90,
       });
 
       if (photo?.dataUrl) {
-        this.images.unshift(photo.dataUrl); // Agrega la nueva foto al inicio de la galería
+        this.images.unshift(photo.dataUrl);
       }
     } catch (error) {
       console.error('Error al tomar la fotografía:', error);
     }
+  }
+
+  async uploadPhoto() {
+    try {
+      const photo = await Camera.getPhoto({
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Photos,
+        quality: 90,
+      });
+
+      if (photo?.dataUrl) {
+        this.images.unshift(photo.dataUrl);
+      }
+    } catch (error) {
+      console.error('Error al subir la fotografía:', error);
+    }
+  }
+
+  deleteImage(index: number) {
+    this.images.splice(index, 1);
   }
 }

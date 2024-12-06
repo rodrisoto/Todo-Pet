@@ -7,6 +7,11 @@ ion-header {
   margin-top: 20%;
 }
 
+.center-title {
+  text-align: center; /* Asegura que el texto esté centrado */
+  margin: 0 auto; /* Elimina cualquier margen adicional */
+  justify-content: center; /* Asegura que funcione con flexbox */
+}
 
 .title_tab {
   text-align: center;
