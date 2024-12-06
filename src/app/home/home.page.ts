@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
+import { MenuController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-home',
@@ -13,10 +14,11 @@ export class HomePage {
   password: string = '';
   bienvenidos: string='Bienvenid@';
 
-  constructor(private route: ActivatedRoute, ) {}
+  constructor(private route: ActivatedRoute, private menu: MenuController ) {}
 
 
   ngOnInit() { 
+    this.menu.close("mainMenu");
     // Obtener los parámetros de la URL
     this.route.queryParams.subscribe(params => {
       this.email = params['email'];
