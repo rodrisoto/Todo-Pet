@@ -1,13 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { AdopcionService } from '../services/adopcion.service';
 
+// Define la interfaz Mascota
+export interface Mascota {
+  id: number;
+  nombre: string;
+  tipo: string;
+  edad: string;
+  desc_fisica: string;
+  imagen: string;
+  url?: string; // Opcional si puede generarse dinámicamente
+}
+
 @Component({
   selector: 'app-adoptame',
   templateUrl: './adoptame.page.html',
   styleUrls: ['./adoptame.page.scss'],
 })
 export class AdoptamePage implements OnInit {
-  mascotas: any[] = []; // Almacén de datos de la API
+  mascotas: Mascota[] = []; // Ahora usamos la interfaz definida
   loading: boolean = true;
 
   constructor(private adopcionService: AdopcionService) {}
@@ -21,7 +32,11 @@ export class AdoptamePage implements OnInit {
     this.loading = true;
     this.adopcionService.getAnimales(region, comuna).subscribe(
       (data) => {
-        this.mascotas = data.data || []; // Procesa los datos de la API
+        // Procesa los datos y añade la URL dinámica si no existe
+        this.mascotas = (data.data || []).map((mascota: Mascota) => ({
+          ...mascota,
+          url: mascota.url || `https://huachitos.cl/animal/${mascota.id}-${mascota.nombre.toLowerCase().replace(/ /g, '-')}`,
+        }));
         console.log('Datos obtenidos:', this.mascotas); // Debugging
         this.loading = false;
       },

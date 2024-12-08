@@ -5,8 +5,10 @@
 </ion-header>
 
 <ion-content>
+  <!-- Spinner de carga -->
   <ion-spinner *ngIf="loading" class="spinner-center"></ion-spinner>
 
+  <!-- Lista de mascotas -->
   <ion-list *ngIf="!loading && mascotas.length > 0">
     <ion-card *ngFor="let mascota of mascotas" class="mascota-card">
       <ion-img [src]="mascota.imagen" alt="Imagen de {{ mascota.nombre }}"></ion-img>
@@ -16,11 +18,19 @@
       </ion-card-header>
       <ion-card-content>
         <p>{{ mascota.desc_fisica }}</p>
-        <ion-button expand="full" color="primary">Ver más</ion-button>
+        <ion-button
+          expand="full"
+          color="primary"
+          [href]="mascota.url"
+          target="_blank"
+        >
+          Ver más
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </ion-list>
 
+  <!-- Mensaje cuando no hay mascotas -->
   <div *ngIf="!loading && mascotas.length === 0" class="no-mascotas">
     <ion-icon name="sad-outline" size="large"></ion-icon>
     <p>No se encontraron mascotas disponibles. ¡Prueba otra región o comuna!</p>
