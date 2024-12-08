@@ -1,0 +1,28 @@
+.center-title {
+    text-align: center;
+    font-weight: bold;
+    color: #1e88e5;
+  }
+  
+  .spinner-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .mascota-card {
+    margin: 10px;
+  }
+  
+  .no-mascotas {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+  }
+  
+  .no-mascotas ion-icon {
+    margin-bottom: 10px;
+    color: gray;
+  }
+  
