@@ -1,19 +1,19 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Centros Médicos</ion-title> <!-- Cambiar el título aquí -->
+    <ion-title>Centros Médicos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-list class="transparent-list">
+<ion-content>
+  <ion-list>
     <ion-item *ngFor="let centro of centrosVeterinarios">
+      <ion-avatar slot="start">
+        <img class="product-image" [src]="centro.imagen" alt="Imagen Centro" />
+      </ion-avatar>
       <ion-label>
         <h2>{{ centro.nombre }}</h2>
-        <p>Dirección: {{ centro.direccion }}</p>
+        <p>{{ centro.direccion }}</p>
       </ion-label>
-      <div class="content_img">
-        <img [src]="centro.imagen" alt="{{ centro.nombre }}" class="product-image" />
-      </div>
     </ion-item>
   </ion-list>
 </ion-content>
